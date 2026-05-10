@@ -427,6 +427,31 @@
             margin-top: 1.25rem;
         }
 
+        .about-bullets {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .about-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+        }
+
         .about-highlights {
             display: grid;
             gap: 1.25rem;
@@ -1071,11 +1096,11 @@
                 </div>
                 <h1>Hi, I'm <span class="gradient-text">Sarath Mohan</span></h1>
                 <p class="hero-subtitle">
-                    I build production AI systems &mdash; from million-scale font retrieval and generative typography to geometric graph diffusion for drug discovery. M.Tech from IIT Delhi.
+                    An ML Researcher driven by a passion for applying Generative AI, Diffusion Models, and Graph Neural Networks to high-impact domains.
                 </p>
                 <div class="hero-actions">
-                    <a href="mailto:sarathmonotype@gmail.com" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i> Get in Touch
+                    <a href="https://www.linkedin.com/in/sarathmohaniitd/" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fab fa-linkedin-in"></i> Let's Connect
                     </a>
                     <a href="#experience" class="btn btn-ghost">
                         View My Work <i class="fas fa-arrow-down" style="font-size:0.8rem"></i>
@@ -1098,30 +1123,15 @@
     <section class="section reveal" id="about">
         <div class="section-header">
             <span class="section-label">// About</span>
-            <h2 class="section-title">Building AI that ships</h2>
+            <h2 class="section-title">About Me</h2>
         </div>
         <div class="about-grid">
             <div class="about-text">
-                <p>
-                    An ML Researcher driven by a passion for applying <strong>Generative AI</strong>,
-                    <strong>Diffusion Models</strong>, and <strong>Graph Neural Networks</strong> to high-impact domains.
-                </p>
-                <p>
-                    At <strong>Monotype</strong>, I design and deploy next-generation generative systems that bring
-                    intelligence and automation to typographic design. My work includes AI-powered font generation &mdash;
-                    reducing production cycles from months to weeks &mdash; and building multi-modal pipelines that integrate
-                    font, text, image, and user input to deliver creative, real-world visual design tools.
-                </p>
-                <p>
-                    Previously at <strong>ImmunitoAI</strong>, I led research in applying geometric graph diffusion models
-                    to drug discovery, designing novel antibody structures by combining advances in deep generative modeling
-                    with molecular graph representations.
-                </p>
-                <p>
-                    I hold an <strong>M.Tech from IIT Delhi</strong>, where I focused on Image Generative Modeling and
-                    Graph Neural Network Stability. Ranked in the 99.47th percentile (AIR 464) in GATE 2021 (Electrical),
-                    I bring both academic rigor and practical engineering experience to every problem I tackle.
-                </p>
+                <ul class="about-bullets">
+                    <li>Currently at <strong>Monotype</strong> &mdash; designing generative AI systems for typographic design, including AI-powered font generation that cuts production cycles from months to weeks, and multi-modal pipelines integrating font, text, image, and user input</li>
+                    <li>Previously at <strong>ImmunitoAI</strong> &mdash; led research on geometric graph diffusion models for drug discovery, designing novel antibody structures with deep generative modeling on molecular graphs</li>
+                    <li><strong>M.Tech from IIT Delhi</strong> &mdash; focused on Image Generative Modeling and GNN Stability; 99.47th percentile (AIR 464) in GATE 2021 (Electrical)</li>
+                </ul>
             </div>
             <div class="about-highlights">
                 <div class="highlight-card">
