@@ -1329,6 +1329,192 @@
             color: var(--gold);
         }
 
+        /* Achievement card — no-image, hero-style */
+        .achievement-card {
+            grid-column: span 2;
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            padding: 3rem 3.5rem;
+            background:
+                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(99, 102, 241, 0.35), transparent 60%),
+                radial-gradient(ellipse 40% 60% at 20% 100%, rgba(6, 182, 212, 0.25), transparent 60%),
+                linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border: 1px solid var(--border-strong);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            transition: all var(--t);
+            cursor: pointer;
+            min-height: 200px;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse 70% 60% at 100% 50%, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 100% 50%, black, transparent 80%);
+            opacity: 0.6;
+        }
+
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 60%);
+            filter: blur(40px);
+            opacity: 0;
+            transition: opacity 0.6s var(--ease);
+            pointer-events: none;
+        }
+
+        .achievement-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .achievement-card:hover::after {
+            opacity: 1;
+        }
+
+        .achievement-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(5rem, 10vw, 8rem);
+            line-height: 0.9;
+            font-weight: 400;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -4px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.6s var(--ease);
+        }
+
+        .achievement-card:hover .achievement-number {
+            transform: scale(1.05);
+        }
+
+        .achievement-info {
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+        }
+
+        .achievement-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 0.6rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .achievement-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .achievement-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .achievement-stat {
+            text-align: right;
+            position: relative;
+            z-index: 1;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border-strong);
+        }
+
+        .achievement-stat .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .achievement-stat .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .achievement-link {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(20, 20, 30, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-strong);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 0.74rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all var(--t);
+            z-index: 2;
+        }
+
+        .achievement-link:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .achievement-card {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem;
+                text-align: center;
+            }
+            .achievement-stat {
+                text-align: center;
+                padding-left: 0;
+                padding-top: 1.25rem;
+                border-left: none;
+                border-top: 1px solid var(--border-strong);
+            }
+            .achievement-link {
+                position: static;
+                align-self: center;
+                margin-bottom: 0;
+            }
+        }
+
         /* ───── CONTACT ───── */
         .contact-section {
             padding: 8rem 2.5rem;
@@ -1831,7 +2017,7 @@
                 <div class="exp-body">
                     <div class="exp-head">
                         <div>
-                            <div class="exp-role">Machine Learning Researcher</div>
+                            <div class="exp-role">Research Software Engineer</div>
                             <div class="exp-company">
                                 <a href="https://www.linkedin.com/company/immunitoai/" target="_blank" rel="noopener" class="exp-company-link">
                                     <i class="fas fa-dna"></i> ImmunitoAI
@@ -1916,7 +2102,7 @@
                 <div class="edu-meta">
                     <span><i class="fas fa-calendar-alt"></i>2021 — 2023</span>
                     <span><i class="fas fa-chart-line"></i>CGPA 8.86</span>
-                    <span><i class="fas fa-medal"></i>GATE AIR 464 (99.47 %ile)</span>
+                    <span><i class="fas fa-location-dot"></i>New Delhi, India</span>
                 </div>
                 <div class="edu-courses">
                     <span class="course-tag">Machine Learning</span>
@@ -1936,6 +2122,26 @@
                     <span><i class="fas fa-location-dot"></i>Kochi, India</span>
                 </div>
             </div>
+
+            <a href="https://gate.iitb.ac.in/G21/index.php" target="_blank" rel="noopener" class="achievement-card reveal-scale stagger-3" style="text-decoration:none;color:inherit">
+                <div class="achievement-number">464</div>
+                <div class="achievement-info">
+                    <div class="achievement-label">
+                        <i class="fas fa-medal"></i> GATE 2021 · All India Rank
+                    </div>
+                    <div class="achievement-title">Top 0.5% in Electrical Engineering</div>
+                    <p class="achievement-desc">
+                        All India Rank of <strong> 464</strong> among 1.2L+ candidates in GATE 2021 (Electrical Engineering), conducted by IIT Bombay — the qualifying score for admission to the M.Tech program at IIT Delhi.
+                    </p>
+                </div>
+                <div class="achievement-stat">
+                    <div class="stat-value">99.47<sup style="font-size:0.55em">th</sup></div>
+                    <div class="stat-label">Percentile</div>
+                </div>
+                <span class="achievement-link">
+                    <i class="fas fa-arrow-up-right-from-square"></i> GATE
+                </span>
+            </a>
         </div>
     </section>
 
@@ -2094,6 +2300,7 @@
                 </div>
                 <div class="milestone-badge"><i class="fas fa-medal"></i> Silver</div>
             </div>
+
         </div>
     </section>
 
